@@ -368,7 +368,7 @@ This file contains license information (MIT license).
 
 ### 4.7 README.mc
 
-The *README.md* is the repositorys read-me file (which results in this text being rendered in GitHub).
+The _README.md_ is the repositorys read-me file (which results in this text being rendered in GitHub).
 
 ### 4.8 Development files and directories
 
