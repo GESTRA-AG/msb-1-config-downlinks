@@ -1,0 +1,28 @@
+
+# os and swap files
+.DS_Store
+*.swp
+~$*
+
+# env related
+.yarn
+.pnp.*
+node_modules
+yarn-error.log
+
+# other project directories and files
+*.xlsx
+*.json
+
+# build related
+*.txt
+*.gz
+dist
+output
+
+# exceptions
+!package.json
+!tsconfig.json
+!Params.xlsx
+!InputExample.xlsx
+!InputTemplate.xlsx

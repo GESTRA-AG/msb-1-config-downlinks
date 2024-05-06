@@ -1,0 +1,46 @@
+{
+  "name": "msb-1-config-downlinks",
+  "description": "This project contains javascript to generate downlinks for configuration of Ecobolt-1 series product.",
+  "author": "Vadim Grebnev",
+  "version": "1.1.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GESTRA-AG/msb-1-config-downlinks"
+  },
+  "bugs": {
+    "url": "https://github.com/GESTRA-AG/msb-1-config-downlinks/issues",
+    "email": "ConnectedServices@gestra.com"
+  },
+  "homepage": "https://www.gestra.com/global/en-GES/products/steam-traps/ecobolt-wireless-steam-trap-monitoring",
+  "packageManager": "yarn@4.2.1",
+  "main": "./src/main.ts",
+  "scripts": {
+    "convert-Params": "convert-excel-to-json --config='{\"sourceFile\":\"./Params.xlsx\",\"sheets\":[{\"name\":\"ConfigTable\",\"header\":{\"rows\":2}},{\"name\":\"ptMap\",\"header\":{\"rows\":1}}],\"columnToKey\":{\"*\":\"{{columnHeader}}\"}}' > Params.json",
+    "convert-ConfigTable": "convert-excel-to-json --config='{\"sourceFile\":\"./Params.xlsx\",\"sheets\":[{\"name\":\"ConfigTable\",\"header\":{\"rows\":2}}],\"columnToKey\":{\"*\":\"{{columnHeader}}\"}}' > ConfigTable.json",
+    "convert-ptMap": "convert-excel-to-json --config='{\"sourceFile\":\"./Params.xlsx\",\"sheets\":[{\"name\":\"ptMap\",\"header\":{\"rows\":1}}],\"columnToKey\":{\"*\":\"{{columnHeader}}\"}}' > ptMap.json",
+    "convert-input": "convert-excel-to-json --config='{\"sourceFile\":\"./input.xlsx\",\"sheets\":[{\"name\":\"Input\",\"header\":{\"rows\":1}}],\"columnToKey\":{\"*\":\"{{columnHeader}}\"}}' > input.json",
+    "convert-input-example": "convert-excel-to-json --config='{\"sourceFile\":\"./InputExample.xlsx\",\"sheets\":[{\"name\":\"Input\",\"header\":{\"rows\":1}}],\"columnToKey\":{\"*\":\"{{columnHeader}}\"}}' > InputExample.json",
+    "convert-input-template": "convert-excel-to-json --config='{\"sourceFile\":\"./InputTemplate.xlsx\",\"sheets\":[{\"name\":\"Input\",\"header\":{\"rows\":1}}],\"columnToKey\":{\"*\":\"{{columnHeader}}\"}}' > InputTemplate.json",
+    "convert-all": "yarn convert-Params && yarn convert-ConfigTable && yarn convert-ptMap && yarn convert-input && yarn convert-input-example && yarn convert-input-template",
+    "format": "prettier --write .",
+    "bundle": "npx webpack --stats-error-details",
+    "build": "yarn format && yarn bundle",
+    "start": "node ./dist/main.js"
+  },
+  "dependencies": {
+    "convert-excel-to-json": "^1.7.0"
+  },
+  "devDependencies": {
+    "@types/convert-excel-to-json": "^1.7.4",
+    "compression-webpack-plugin": "^11.1.0",
+    "node.extend": "^2.0.3",
+    "prettier": "^3.2.5",
+    "terser-webpack-plugin": "^5.3.10",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.4.5",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4",
+    "xlsx": "^0.18.5"
+  }
+}
